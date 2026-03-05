@@ -1,8 +1,19 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 app = FastAPI()
+
+# Add this block ↓
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # --- Step A: Define what the incoming data looks like ---
 class SentimentRequest(BaseModel):
