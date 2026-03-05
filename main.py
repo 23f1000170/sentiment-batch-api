@@ -32,13 +32,23 @@ class SentimentResponse(BaseModel):
 def analyze_sentiment(sentence: str) -> str:
     text = sentence.lower()
 
+    def analyze_sentiment(sentence: str) -> str:
+    text = sentence.lower()
+
     happy_words = [
         "love", "great", "amazing", "fantastic", "wonderful", "excellent",
         "happy", "joy", "excited", "awesome", "good", "best", "brilliant",
         "delightful", "pleased", "glad", "positive", "superb", "like",
         "enjoy", "beautiful", "perfect", "incredible", "outstanding",
-        "yay", "woah", "wow", "thanks", "thank", "appreciate", "adore",
-        "enthusiastic", "cheerful", "thrilled", "ecstatic", "grateful"
+        "yay", "wow", "thanks", "thank", "appreciate", "adore",
+        "cheerful", "thrilled", "ecstatic", "grateful", "blessed",
+        "fun", "smile", "laugh", "win", "winning", "success", "successful",
+        "celebrate", "celebration", "congratulations", "congrats", "proud",
+        "hope", "hopeful", "optimistic", "inspiring", "inspired",
+        "friendly", "kind", "generous", "warm", "caring", "sweet",
+        "nice", "delight", "pleasure", "content", "satisfied", "comfortable",
+        "peaceful", "calm", "relaxed", "refreshed", "energized", "alive",
+        "free", "relief", "relieved", "better", "improve", "improving"
     ]
 
     sad_words = [
@@ -48,7 +58,14 @@ def analyze_sentiment(sentence: str) -> str:
         "failure", "fail", "broken", "wrong", "problem", "issue", "hurt",
         "pain", "suffer", "loss", "lost", "difficult", "hard", "struggle",
         "worried", "anxious", "fear", "scared", "frustrated", "annoyed",
-        "sorry", "regret", "shame", "embarrassed", "useless", "hopeless"
+        "sorry", "regret", "shame", "embarrassed", "useless", "hopeless",
+        "lonely", "alone", "empty", "numb", "tired", "exhausted", "sick",
+        "ill", "weak", "helpless", "powerless", "stuck", "trapped", "burden",
+        "hate", "despise", "resent", "bitter", "jealous", "envy",
+        "angry", "rage", "furious", "mad", "irritated", "annoyed",
+        "grief", "grieve", "mourn", "mourning", "devastated", "heartbroken",
+        "cry", "tears", "weep", "sorrow", "misery", "agony", "disaster",
+        "horrible", "dreadful", "nightmare", "waste", "pointless", "meaningless"
     ]
 
     happy_count = sum(1 for word in happy_words if word in text)
