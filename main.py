@@ -33,9 +33,8 @@ def analyze_sentiment(sentence: str) -> str:
     text = sentence.lower()
 
     def analyze_sentiment(sentence: str) -> str:
-    text = sentence.lower()
-
-    happy_words = [
+        text = sentence.lower()
+        happy_words = [
         "love", "great", "amazing", "fantastic", "wonderful", "excellent",
         "happy", "joy", "excited", "awesome", "good", "best", "brilliant",
         "delightful", "pleased", "glad", "positive", "superb", "like",
@@ -50,8 +49,7 @@ def analyze_sentiment(sentence: str) -> str:
         "peaceful", "calm", "relaxed", "refreshed", "energized", "alive",
         "free", "relief", "relieved", "better", "improve", "improving"
     ]
-
-    sad_words = [
+        sad_words = [
         "hate", "terrible", "awful", "horrible", "bad", "worst", "sad",
         "upset", "angry", "disappointed", "depressed", "miserable", "crying",
         "poor", "unfortunate", "disgusting", "pathetic", "dreadful", "unhappy",
@@ -67,16 +65,15 @@ def analyze_sentiment(sentence: str) -> str:
         "cry", "tears", "weep", "sorrow", "misery", "agony", "disaster",
         "horrible", "dreadful", "nightmare", "waste", "pointless", "meaningless"
     ]
+        happy_count = sum(1 for word in happy_words if word in text)
+        sad_count = sum(1 for word in sad_words if word in text)
 
-    happy_count = sum(1 for word in happy_words if word in text)
-    sad_count = sum(1 for word in sad_words if word in text)
-
-    if happy_count > sad_count:
-        return "happy"
-    elif sad_count > happy_count:
-        return "sad"
-    else:
-        return "neutral"
+        if happy_count > sad_count:
+            return "happy"
+        elif sad_count > happy_count:
+            return "sad"
+        else:
+            return "neutral"
 
 # --- Step E: The actual POST endpoint ---
 @app.post("/sentiment", response_model=SentimentResponse)
